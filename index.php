@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
   <!-- Css -->
   <link rel="stylesheet" href="style.css">
   <!-- Axios -->
@@ -15,11 +18,30 @@
 <body>
 
   <div id="App">
-    <div class="container">
-      <ul>
-        <li v-for="(record, index) in records" :key="index">{{record.title}}</li>
-      </ul>
-    </div>
+    <header>
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Logo">
+      </div>
+      <p>Lorem</p>
+    </header>
+    <main>
+      <div class="container record_wrapper">
+        <div class="record" v-for="(record, index) in records" :key="index">
+          <div class="record_inside">
+            <div class="record_info">
+              <h3>{{record.title}}</h3>
+            </div>
+            <div class="record_img">
+              <img :src="record.poster" :alt="record.title">
+            </div>
+            <div class="record_info">
+              <h5>{{record.author}}</h5>
+              <h4>{{record.year}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 
   <script src="main.js"></script>  

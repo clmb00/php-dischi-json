@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+
+:root{
+  --darkest: #121212;
+  --background-color: #1e1e1e;
+  --primary-color: #161616;
+  --hover-color: #242424;
+  --lightest: #f6f6f6;
+  --accent-color: #1fdf64;
+}
+
 *,
 *::after,
 *::before{
@@ -7,12 +18,109 @@
 }
 
 body{
-  background-color: darkblue;
-  color: white;
+  background-color: var(--background-color);
+  color: var(--lightest);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+img{
+  max-height: 100%;
 }
 
 .container{
   margin: 0 auto;
   max-width: 1200px;
   width: 80%;
+}
+
+header{
+  height: 80px;
+  background-color: var(--darkest);
+  padding-inline: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo{
+  height: 60%;
+}
+
+.record_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2rem;
+  margin-block: 3rem;
+}
+
+.record{
+  width: calc(100% / 3);
+  aspect-ratio: 1/1;
+  padding: 1rem;
+}
+
+.record_inside{
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  row-gap: 1rem;
+  cursor: pointer;
+  transition: transform .5s ease;
+}
+
+.record_inside:hover{
+  transform: scale(1.08);
+  background-color: var(--hover-color);
+}
+
+.record_inside .record_info{
+  height: 15%;
+  max-width: 64%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.record_inside h3{
+  font-size: 1.05rem;
+}
+
+.record_inside h5{
+  font-weight: 400;
+  font-size: .75rem;
+  margin-bottom: .4rem;
+}
+
+.record_inside h4{
+  font-size: .85rem;
+}
+
+.record_img{
+  width: 50%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.record_img img{
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 1100px){
+  .record{
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (max-width: 750px){
+  .record{
+    width: 100%;
+  }
 }
