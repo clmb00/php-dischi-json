@@ -37,6 +37,7 @@
       <div class="container record_wrapper">
 
         <div class="record" v-for="(record, index) in records" :key="index" @click="clickRecord(index)">
+          <button class="delete_record" @click.stop="deleteRecord(index)">&#x2717;</button>
           <div class="record_inside">
             <div class="record_info">
               <h3>{{record.title}}</h3>
@@ -47,7 +48,6 @@
             <div class="record_info">
               <h5>{{record.author}}</h5>
               <h4>{{record.year}}</h4>
-              <button @click.stop="deleteRecord(index)">Delete Me!</button>
             </div>
           </div>
         </div>
@@ -95,6 +95,7 @@
         <input type="text" name="newYear" id="newYear" v-model="newRecord.year" placeholder="Insert the year...">
         <label for="newGenre">Genre: </label>
         <select name="newGenre" v-model="newRecord.genre" id="newGenre">
+          <option value="null" hidden disabled selected>Select Genre</option>
           <option value="Pop">Pop</option>
           <option value="Rock">Rock</option>
           <option value="Metal">Metal</option>
@@ -102,9 +103,8 @@
         </select>
         <label for="newUrl">Image: </label>
         <input type="text" name="newUrl" id="newUrl" v-model="newRecord.poster" placeholder="Insert a url">
-        <button type="reset">Clear</button>
       </form>
-      <button @click="callNewRecord()">Add</button>
+      <button @click="callNewRecord(); showFormNew = false">Add</button>
       <div class="exit_button" @click="showFormNew = false">
         &#x2717;
       </div>

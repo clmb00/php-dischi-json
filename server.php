@@ -13,7 +13,7 @@ if(isset($_POST['searchGenre']) && !empty($_POST['searchGenre'])){
   $records = array_filter($records, fn($record) => $record['genre'] == $_POST['searchGenre']);
 }
 
-if(isset($_POST['title'])){
+if(isset($_POST['author']) && isset($_POST['genre']) && isset($_POST['title']) && isset($_POST['poster']) && isset($_POST['year'])){
   $record = [
     'author' => $_POST['author'],
     'genre' => $_POST['genre'],

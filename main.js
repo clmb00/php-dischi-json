@@ -63,18 +63,22 @@ createApp({
        })
     },
     callNewRecord(){
-      const data = this.newRecord;
-
-      axios.post(this.apiUrl, data, {
-        headers: {'Content-Type' : 'multipart/form-data'}
-      })
-       .then(result => {
-        console.log(result.data);
-        this.records = result.data;
-       })
-       .catch((error)=>{
-        console.log(error.code);
-       })
+      if(this.newRecord.title == '' || this.newRecord.author == '' || this.newRecord.poster == '' || this.newRecord.year == '' || this.newRecord.genre == ''){
+        alert('Fill all the campi')
+      } else {
+        const data = this.newRecord;
+  
+        axios.post(this.apiUrl, data, {
+          headers: {'Content-Type' : 'multipart/form-data'}
+        })
+         .then(result => {
+          console.log(result.data);
+          this.records = result.data;
+         })
+         .catch((error)=>{
+          console.log(error.code);
+         })
+      }
     },
     deleteRecord(index){
       if(confirm("Are you sure you want to delete? The operation is irreversible")){
