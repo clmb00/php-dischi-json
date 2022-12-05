@@ -26,7 +26,7 @@
     </header>
     <main>
       <div class="container record_wrapper">
-        <div class="record" v-for="(record, index) in records" :key="index">
+        <div class="record" v-for="(record, index) in records" :key="index" @click="clickRecord(index)">
           <div class="record_inside">
             <div class="record_info">
               <h3>{{record.title}}</h3>
@@ -42,6 +42,20 @@
         </div>
       </div>
     </main>
+    <div class="moreinfo" v-show="showMoreInfo">
+      <h1>{{recordOpen.title}}</h1>
+      <div class="record_inside">
+        <div class="record_img">
+          <img :src="recordOpen.poster" :alt="recordOpen.title">
+        </div>
+      </div>
+      <h4>{{recordOpen.author}}</h4>
+      <h3>{{recordOpen.year}}</h3>
+      <h3>{{recordOpen.genre}}</h3>
+      <div class="exit_button" @click="showMoreInfo = false">
+        &#x2717;
+      </div>
+    </div>
   </div>
 
   <script src="main.js"></script>  
