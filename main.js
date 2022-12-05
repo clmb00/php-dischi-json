@@ -3,10 +3,23 @@ const { createApp } = Vue;
 createApp({
   data(){
     return{
-      prova: 'ok?'
+      apiUrl: 'server.php',
+      records: []
+    }
+  },
+  methods:{
+    callApi(){
+      axios.get(this.apiUrl)
+       .then((result)=>{
+        console.log(result.data);
+        this.records = result.data;
+       })
+       .catch((error)=>{
+        console.log(error.code);
+       })
     }
   },
   mounted(){
-    console.log(this.prova)
+    this.callApi();
   }
 }).mount('#App');

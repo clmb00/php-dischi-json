@@ -15,7 +15,11 @@
 <body>
 
   <div id="App">
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, eum consectetur. Recusandae cumque blanditiis, provident ducimus eius autem enim expedita natus earum inventore qui, dolorem adipisci modi labore! Magni, consequatur.</p>
+    <div class="container">
+      <ul>
+        <li v-for="(record, index) in records" :key="index">{{record.title}}</li>
+      </ul>
+    </div>
   </div>
 
   <script src="main.js"></script>  
