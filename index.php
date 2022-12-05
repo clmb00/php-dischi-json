@@ -35,6 +35,7 @@
     </header>
     <main>
       <div class="container record_wrapper">
+
         <div class="record" v-for="(record, index) in records" :key="index" @click="clickRecord(index)">
           <div class="record_inside">
             <div class="record_info">
@@ -46,11 +47,28 @@
             <div class="record_info">
               <h5>{{record.author}}</h5>
               <h4>{{record.year}}</h4>
+              <button @click.stop="deleteRecord(index)">Delete Me!</button>
             </div>
           </div>
         </div>
+
+        <div class="record" @click="showFormNew = true">
+          <div class="record_inside">
+            <div class="record_info">
+              <h3>New</h3>
+            </div>
+            <div class="record_img">
+              <img src="./img/new-record.png" alt="+">
+            </div>
+            <div class="record_info">
+              <h5>Add a new record</h5>
+            </div>
+          </div>
+        </div>
+
       </div>
     </main>
+
     <div class="moreinfo" v-show="showMoreInfo">
       <h1>{{recordOpen.title}}</h1>
       <div class="record_inside">
@@ -65,6 +83,33 @@
         &#x2717;
       </div>
     </div>
+
+    <div class="moreinfo" v-show="showFormNew">
+      <form action="index.php">
+        <h1>Add a New Record</h1>
+        <label for="newTitle">Title: </label>
+        <input type="text" name="newTitle" id="newTitle" v-model="newRecord.title" placeholder="Insert the title...">
+        <label for="newAuthor">Author: </label>
+        <input type="text" name="newAuthor" id="newAuthor" v-model="newRecord.author" placeholder="Insert the author...">
+        <label for="newYear">Year: </label>
+        <input type="text" name="newYear" id="newYear" v-model="newRecord.year" placeholder="Insert the year...">
+        <label for="newGenre">Genre: </label>
+        <select name="newGenre" v-model="newRecord.genre" id="newGenre">
+          <option value="Pop">Pop</option>
+          <option value="Rock">Rock</option>
+          <option value="Metal">Metal</option>
+          <option value="Jazz">Jazz</option>
+        </select>
+        <label for="newUrl">Image: </label>
+        <input type="text" name="newUrl" id="newUrl" v-model="newRecord.poster" placeholder="Insert a url">
+        <button type="reset">Clear</button>
+      </form>
+      <button @click="callNewRecord()">Add</button>
+      <div class="exit_button" @click="showFormNew = false">
+        &#x2717;
+      </div>
+    </div>
+
   </div>
 
   <script src="main.js"></script>  
