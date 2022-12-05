@@ -22,7 +22,16 @@
       <div class="logo">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="Logo">
       </div>
-      <p>Lorem</p>
+      <form action="index.php">
+        <select name="selectGenre" id="select_genre" @change="filterRecords($event)">
+          <option value="null" hidden disabled selected>Select Genre</option>
+          <option value="Pop">Pop</option>
+          <option value="Rock">Rock</option>
+          <option value="Metal">Metal</option>
+          <option value="Jazz">Jazz</option>
+          <option value="">All</option>
+        </select>
+      </form>
     </header>
     <main>
       <div class="container record_wrapper">

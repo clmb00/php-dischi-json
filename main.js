@@ -39,6 +39,20 @@ createApp({
        .catch((error)=>{
         console.log(error.code);
        })
+    },
+    filterRecords(value){
+      const genre = value.srcElement.value;
+      const data = new FormData();
+      data.append('searchGenre', genre);
+
+      axios.post(this.apiUrl, data)
+       .then((result)=>{
+        console.log(result.data);
+        this.records = result.data;
+       })
+       .catch((error)=>{
+        console.log(error.code);
+       })
     }
   },
   mounted(){
