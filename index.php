@@ -37,7 +37,6 @@
       <div class="container record_wrapper">
 
         <div class="record" v-for="(record, index) in records" :key="index" @click="clickRecord(index)">
-          <button class="delete_record" @click.stop="deleteRecord(index)">&#x2717;</button>
           <div class="record_inside">
             <div class="record_info">
               <h3>{{record.title}}</h3>
@@ -82,6 +81,7 @@
       <div class="exit_button" @click="showMoreInfo = false">
         &#x2717;
       </div>
+      <button class="delete_record" @click.stop="deleteRecord(recordOpen.title)">Delete Record</button>
     </div>
 
     <div class="moreinfo" v-show="showFormNew">

@@ -19,14 +19,19 @@ if(isset($_POST['author']) && isset($_POST['genre']) && isset($_POST['title']) &
     'genre' => $_POST['genre'],
     'poster' => $_POST['poster'],
     'title' => $_POST['title'],
-    'year' => $_POST['year'],
+    'year' => $_POST['year']
   ];
   $records[] = $record;
   file_put_contents('./db/dischi.json', json_encode($records));
 }
 
 if(isset($_POST['deleteRecord'])){
-  array_splice($records, $_POST['deleteRecord'], 1);
+  foreach($records as $key => $record) {
+    if($record['title'] == $_POST['deleteRecord']){
+      $index = $key;
+    }
+  }
+  array_splice($records, $index, 1);
   file_put_contents('./db/dischi.json', json_encode($records));
 }
 

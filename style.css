@@ -7,6 +7,7 @@
   --hover-color: #242424;
   --lightest: #f6f6f6;
   --accent-color: #1fdf64;
+  --delete-color: #991616;
 }
 
 *,
@@ -57,7 +58,6 @@ header{
   width: calc(100% / 3);
   aspect-ratio: 1/1;
   padding: 1rem;
-  position: relative;
 }
 
 .record_inside{
@@ -171,24 +171,9 @@ header select{
   color: var(--lightest);
 }
 
-button.delete_record{
-  border: none;
-  height: 40px;
-  aspect-ratio: 1/1;
-  line-height: 34px;
-  background-color: transparent;
-  color: var(--lightest);
-  cursor: pointer;
+.moreinfo button.delete_record{
   font-weight: 800;
-  border-radius: 50%;
-  position: absolute;
-  font-size: 1.1rem;
-  top: 15px;
-  right: 15px;
-}
-
-button.delete_record:hover{
-  background-color: var(--hover-color);
+  background-color: var(--delete-color);
 }
 
 .moreinfo form{

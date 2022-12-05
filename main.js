@@ -5,16 +5,13 @@ createApp({
     return{
       apiUrl: 'server.php',
       records: [],
-      recordOpen: {
-        title: 'none',
-        author: 'none'
-      },
+      recordOpen: {},
       newRecord: {
-        title: '',
-        author: '',
-        year: '',
-        genre: '',
-        poster: ''
+        "title": '',
+        "author": '',
+        "year": '',
+        "poster": '',
+        "genre": ''
       },
       showMoreInfo: false,
       showFormNew: false
@@ -80,10 +77,10 @@ createApp({
          })
       }
     },
-    deleteRecord(index){
+    deleteRecord(title){
       if(confirm("Are you sure you want to delete? The operation is irreversible")){
         const data = new FormData();
-        data.append('deleteRecord', index);
+        data.append('deleteRecord', title);
 
         axios.post(this.apiUrl, data)
         .then((result)=>{
@@ -93,6 +90,7 @@ createApp({
         .catch((error)=>{
           console.log(error.code);
         })
+        this.showMoreInfo = false;
       }
     }
   },
