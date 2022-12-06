@@ -5,12 +5,12 @@ $string = file_get_contents('./db/dischi.json');
 $records = json_decode($string, true);
 
 // logic
-if(isset($_POST['toggleActive'])){
-  $records = $records[$_POST['toggleActive']];
+if(isset($_GET['toggleActive'])){
+  $records = $records[$_GET['toggleActive']];
 }
 
-if(isset($_POST['searchGenre']) && !empty($_POST['searchGenre'])){
-  $records = array_filter($records, fn($record) => $record['genre'] == $_POST['searchGenre']);
+if(isset($_GET['searchGenre']) && !empty($_GET['searchGenre'])){
+  $records = array_filter($records, fn($record) => $record['genre'] == $_GET['searchGenre']);
 }
 
 if(isset($_POST['author']) && isset($_POST['genre']) && isset($_POST['title']) && isset($_POST['poster']) && isset($_POST['year'])){

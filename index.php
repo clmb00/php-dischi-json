@@ -92,10 +92,10 @@
         <label for="newAuthor">Author: </label>
         <input type="text" name="newAuthor" id="newAuthor" v-model="newRecord.author" placeholder="Insert the author...">
         <label for="newYear">Year: </label>
-        <input type="text" name="newYear" id="newYear" v-model="newRecord.year" placeholder="Insert the year...">
+        <input type="number" name="newYear" id="newYear" v-model="newRecord.year" placeholder="Insert the year...">
         <label for="newGenre">Genre: </label>
         <select name="newGenre" v-model="newRecord.genre" id="newGenre">
-          <option value="null" hidden disabled selected>Select Genre</option>
+          <option value="null" hidden disabled selected>Select Genre</osption>
           <option value="Pop">Pop</option>
           <option value="Rock">Rock</option>
           <option value="Metal">Metal</option>

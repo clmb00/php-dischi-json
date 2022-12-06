@@ -21,7 +21,6 @@ createApp({
     callApi(){
       axios.get(this.apiUrl)
        .then((result)=>{
-        console.log(result.data);
         this.records = result.data;
        })
        .catch((error)=>{
@@ -33,12 +32,12 @@ createApp({
       this.callSingleRecord(index);
     },
     callSingleRecord(index){
-      const data = new FormData();
-      data.append('toggleActive', index);
+      const params = {
+        toggleActive: index
+      }
 
-      axios.post(this.apiUrl, data)
+      axios.get(this.apiUrl,{ params })
        .then((singles)=>{
-        console.log(singles.data);
         this.recordOpen = singles.data;
        })
        .catch((error)=>{
@@ -47,12 +46,12 @@ createApp({
     },
     filterRecords(value){
       const genre = value.srcElement.value;
-      const data = new FormData();
-      data.append('searchGenre', genre);
+      const params = {
+        searchGenre: genre
+      }
 
-      axios.post(this.apiUrl, data)
+      axios.get(this.apiUrl, { params })
        .then((result)=>{
-        console.log(result.data);
         this.records = result.data;
        })
        .catch((error)=>{
@@ -69,7 +68,6 @@ createApp({
           headers: {'Content-Type' : 'multipart/form-data'}
         })
          .then(result => {
-          console.log(result.data);
           this.records = result.data;
          })
          .catch((error)=>{
@@ -84,7 +82,6 @@ createApp({
 
         axios.post(this.apiUrl, data)
         .then((result)=>{
-          console.log(result.data);
           this.records = result.data;
         })
         .catch((error)=>{
